@@ -1,0 +1,18 @@
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-tweet form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-tweet div {
+  font-family: 'Bungee', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  border-top: 20px black;
+}
+
