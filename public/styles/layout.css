@@ -24,5 +24,14 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 body {
+  display: flex;
   font-family: 'Source Sans Pro', sans-serif;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 90%;
 }
