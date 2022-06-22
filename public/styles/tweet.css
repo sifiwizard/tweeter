@@ -1,0 +1,23 @@
+.tweets {
+  width: 100%;
+}
+
+article header{
+  display: flex;
+  justify-content: space-between;
+}
+
+article{
+  margin-top: 20px;
+  border: 2px solid black;
+}
+
+article footer {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 8px;
+  border-top: 2px solid black;
+  justify-content: space-between;
+}
