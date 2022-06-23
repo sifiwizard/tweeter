@@ -52,6 +52,8 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <h3 class="error" id="errorText" hidden><i class="fa-solid fa-triangle-exclamation"></i> There is no text in your message</h3>
+        <h3 class="error" id="errorLimit" hidden><i class="fa-solid fa-triangle-exclamation"></i> You are over the charater limit</h3>
         <form method="post" action="/tweets">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>

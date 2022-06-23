@@ -37,3 +37,9 @@ body {
   width: 90%;
 }
 
+.error {
+  background-color: red;
+  color: #f4f1ec;
+  /* border-radius: 10px; */
+  padding: 0.5em;
+}

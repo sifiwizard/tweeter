@@ -68,12 +68,6 @@ const loadTweets = function() {
   return $.get("/tweets");
 };
 
-const escapeFunction = function(str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
-
 // Test / driver code (temporary)
 $(document).ready(function() {
   loadTweets()
@@ -83,16 +77,17 @@ $(document).ready(function() {
   // .then(renderTweets(testTweets));
   $("form").submit(function(event) {
     event.preventDefault();
+    $(".error").slideUp("fast");
     const data = $(this).serialize();
     const chars = $(this).find("#tweet-text");
     let vaild = true;
     if (chars.val() === "" || chars.val() === null) {
       vaild = false;
-      alert("No text entered");
+      $("#errorText").slideDown("fast");
     }
     if (chars.val().length > 140) {
       vaild = false;
-      alert("Over Charater Limit");
+      $("#errorLimit").slideDown("fast");
     }
     if (vaild) {
       $(chars).val('');
