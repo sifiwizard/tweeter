@@ -58,7 +58,7 @@ const createTweetElement = function(tweet) {
 
 const renderTweets = function(arr) {
   for (const tweet of arr) {
-    $('#tweets-container').append(createTweetElement(tweet));
+    $('#tweets-container').prepend(createTweetElement(tweet));
   }
 }
 
@@ -76,19 +76,24 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    const chars = $(this).find("#tweet-text").val();
+    const chars = $(this).find("#tweet-text");
     let vaild = true;
-    if (chars === "" || chars === null) {
+    if (chars.val() === "" || chars.val() === null) {
       vaild = false;
       alert("No text entered");
       
     }
-    if (chars.length > 140) {
+    if (chars.val().length > 140) {
       vaild = false;
       alert("Over Charater Limit");
     }
     if (vaild) {
-      $.post("/tweets/", data);
+      $(chars).val('')
+      $.post("/tweets", data)
+      .then(() => {return loadTweets()})
+      .then(data => {
+        renderTweets(data);
+      })
     }
-  })
-})
+  });
+});
