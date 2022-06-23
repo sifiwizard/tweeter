@@ -56,19 +56,19 @@ const createTweetElement = function(tweet) {
 
   $($tweet).find('.info').text(newText);
   return $tweet;
-}
+};
 
 const renderTweets = function(arr) {
   for (const tweet of arr) {
     $('#tweets-container').prepend(createTweetElement(tweet));
   }
-}
+};
 
 const loadTweets = function() {
   return $.get("/tweets");
-}
+};
 
-const escapeFunction = function (str) {
+const escapeFunction = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -77,9 +77,9 @@ const escapeFunction = function (str) {
 // Test / driver code (temporary)
 $(document).ready(function() {
   loadTweets()
-  .then(data => {
-    renderTweets(data);
-  })
+    .then(data => {
+      renderTweets(data);
+    });
   // .then(renderTweets(testTweets));
   $("form").submit(function(event) {
     event.preventDefault();
@@ -95,12 +95,14 @@ $(document).ready(function() {
       alert("Over Charater Limit");
     }
     if (vaild) {
-      $(chars).val('')
+      $(chars).val('');
       $.post("/tweets", data)
-      .then(() => {return loadTweets()})
-      .then(data => {
-        renderTweets(data);
-      })
+        .then(() => {
+          return loadTweets();
+        })
+        .then(data => {
+          renderTweets(data);
+        });
     }
   });
 });
