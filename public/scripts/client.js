@@ -31,6 +31,7 @@
 // ]
 
 const createTweetElement = function(tweet) {
+  let newText = tweet.content.text;
   let $tweet = $(`<article class="tweet">
   <header>
     <div>
@@ -40,7 +41,7 @@ const createTweetElement = function(tweet) {
       ${tweet.user.handle}
     </div>
   </header>
-  ${tweet.content.text} 
+  <div class="info"></div>
   <footer>
     <div>
       ${timeago.format(tweet.created_at)}
@@ -53,6 +54,7 @@ const createTweetElement = function(tweet) {
   </footer>
 </article>`);
 
+  $($tweet).find('.info').text(newText);
   return $tweet;
 }
 
@@ -65,6 +67,12 @@ const renderTweets = function(arr) {
 const loadTweets = function() {
   return $.get("/tweets");
 }
+
+const escapeFunction = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 // Test / driver code (temporary)
 $(document).ready(function() {
@@ -81,7 +89,6 @@ $(document).ready(function() {
     if (chars.val() === "" || chars.val() === null) {
       vaild = false;
       alert("No text entered");
-      
     }
     if (chars.val().length > 140) {
       vaild = false;
