@@ -31,7 +31,6 @@
 // ]
 
 const createTweetElement = function(tweet) {
-  const days = timeago.format(tweet.created_at);
   let $tweet = $(`<article class="tweet">
   <header>
     <div>
@@ -44,7 +43,7 @@ const createTweetElement = function(tweet) {
   ${tweet.content.text} 
   <footer>
     <div>
-      ${days}
+      ${timeago.format(tweet.created_at)}
     </div>
     <div>
       <i class="fa-solid fa-flag"></i>
@@ -59,7 +58,6 @@ const createTweetElement = function(tweet) {
 
 const renderTweets = function(arr) {
   for (const tweet of arr) {
-    console.log(tweet)
     $('#tweets-container').append(createTweetElement(tweet));
   }
 }
@@ -78,7 +76,19 @@ $(document).ready(function() {
   $("form").submit(function(event) {
     event.preventDefault();
     const data = $(this).serialize();
-    console.log(event);
-    $.post("/tweets/", data);
+    const chars = $(this).find("#tweet-text").val();
+    let vaild = true;
+    if (chars === "" || chars === null) {
+      vaild = false;
+      alert("No text entered");
+      
+    }
+    if (chars.length > 140) {
+      vaild = false;
+      alert("Over Charater Limit");
+    }
+    if (vaild) {
+      $.post("/tweets/", data);
+    }
   })
 })
