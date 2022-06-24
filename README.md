@@ -8,10 +8,10 @@ The page is dynamic and shifts styles depend on if is mobile or desktop
 
 Users may post tweets and scroll through previous tweets
 
-![Mobile]()
-![Desktop]()
-![Scrolling]()
-![Post]()
+![Mobile](https://github.com/sifiwizard/tweeter/blob/master/docs/mobile.png)
+![Desktop](https://github.com/sifiwizard/tweeter/blob/master/docs/desktop.png)
+![Scrolling](https://github.com/sifiwizard/tweeter/blob/master/docs/scrolling.png)
+![Post](https://github.com/sifiwizard/tweeter/blob/master/docs/post.png)
 
 ## Getting Started
 
