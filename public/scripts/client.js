@@ -34,8 +34,8 @@ const createTweetElement = function(tweet) {
   let newText = tweet.content.text;
   let $tweet = $(`<article class="tweet">
   <header>
-    <div>
-    <img src="${tweet.user.avatars}"/> ${tweet.user.name}
+    <div class="topLeft">
+    <img src="${tweet.user.avatars}"/> <div>${tweet.user.name}</div>
     </div>
     <div>
       ${tweet.user.handle}
@@ -46,7 +46,7 @@ const createTweetElement = function(tweet) {
     <div>
       ${timeago.format(tweet.created_at)}
     </div>
-    <div>
+    <div class="icons">
       <i class="fa-solid fa-flag"></i>
       <i class="fa-solid fa-retweet"></i>
       <i class="fa-solid fa-heart"></i>
@@ -59,6 +59,7 @@ const createTweetElement = function(tweet) {
 };
 
 const renderTweets = function(arr) {
+  $("#tweets-container").empty();
   for (const tweet of arr) {
     $('#tweets-container').prepend(createTweetElement(tweet));
   }
@@ -74,7 +75,6 @@ $(document).ready(function() {
     .then(data => {
       renderTweets(data);
     });
-  // .then(renderTweets(testTweets));
   $("form").submit(function(event) {
     event.preventDefault();
     $(".error").slideUp("fast");

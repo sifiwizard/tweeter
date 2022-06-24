@@ -2,17 +2,27 @@
   width: 100%;
 }
 
-article header{
+.tweet header{
   display: flex;
   justify-content: space-between;
 }
 
-article{
+.tweet header .topLeft{
+  display: flex;
+}
+
+.tweet{
   margin-top: 20px;
+  padding: 5px;
   border: 2px solid black;
 }
 
-article footer {
+.tweet .info{
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.tweet footer {
   display: flex;
   margin-top: 10px;
   margin-left: 10px;
@@ -20,4 +30,20 @@ article footer {
   padding: 8px;
   border-top: 2px solid black;
   justify-content: space-between;
+}
+
+.tweet:hover{
+  box-shadow: 5px 10px;
+}
+
+.tweet .icons i:hover {
+  color: gold;
+}
+
+@media screen and (min-width: 768px) {
+  .tweets{
+    overflow-y: auto;
+    height: calc(100vh - 120px - 252px - 1em);
+    /* height: 58vh; */
+  }
 }
