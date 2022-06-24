@@ -1,7 +1,8 @@
 nav {
   display: flex;
-  height: 120px;
-  background-color: #4056A1;
+  height: 120px; 
+  /* Transpert for mobile */
+  background-color: transparent;
   color: #FFFFFF;
   justify-content: space-between;
   position: fixed;
@@ -27,4 +28,11 @@ span {
 
 .arrowTweet :nth-child(2) {
   color: red;
+}
+
+
+@media screen and (min-width: 768px) {
+  nav {
+    background-color: #4056A1;
+  }
 }

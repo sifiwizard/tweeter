@@ -4,34 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-// const testTweets =  [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
-
-const createTweetElement = function(tweet) {
-  let newText = tweet.content.text;
+const createTweetElement = function(tweet) { //Creates basic tweet element
+  let newText = tweet.content.text; //The actual tweet text
   let $tweet = $(`<article class="tweet">
   <header>
     <div class="topLeft">
@@ -54,14 +28,14 @@ const createTweetElement = function(tweet) {
   </footer>
 </article>`);
 
-  $($tweet).find('.info').text(newText);
+  $($tweet).find('.info').text(newText); //To stop cross site scripting
   return $tweet;
 };
 
-const renderTweets = function(arr) {
-  $("#tweets-container").empty();
+const renderTweets = function(arr) { //Renders tweets
+  $("#tweets-container").empty(); //Emptys container, copys if left full
   for (const tweet of arr) {
-    $('#tweets-container').prepend(createTweetElement(tweet));
+    $('#tweets-container').prepend(createTweetElement(tweet)); //Addpeds to start
   }
 };
 
@@ -69,18 +43,18 @@ const loadTweets = function() {
   return $.get("/tweets");
 };
 
-// Test / driver code (temporary)
 $(document).ready(function() {
-  loadTweets()
+  loadTweets() //Loads then renders
     .then(data => {
       renderTweets(data);
     });
+
   $("form").submit(function(event) {
     event.preventDefault();
-    $(".error").slideUp("fast");
-    const data = $(this).serialize();
+    $(".error").slideUp("fast"); //Slides error up if visible
+    const data = $(this).serialize(); 
     const chars = $(this).find("#tweet-text");
-    let vaild = true;
+    let vaild = true; // Error checking varible
     if (chars.val() === "" || chars.val() === null) {
       vaild = false;
       $("#errorText").slideDown("fast");
@@ -90,8 +64,8 @@ $(document).ready(function() {
       $("#errorLimit").slideDown("fast");
     }
     if (vaild) {
-      $(chars).val('');
-      $.post("/tweets", data)
+      $(chars).val(''); //Removes text in form
+      $.post("/tweets", data) //Post to server then loads and renders
         .then(() => {
           return loadTweets();
         })

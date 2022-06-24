@@ -30,6 +30,7 @@ body {
   align-items: center;
 }
 
+/* Seperate content for dynamic shifting */
 .content {
   width: 100vw;
   display: flex;
@@ -47,25 +48,25 @@ body {
 
 }
 
+/* Basic error style */
 .error {
   background-color: red;
   color: #f4f1ec;
   padding: 0.5em;
 }
 
-
+/* No great change in site structure between desktop and tablit so no need for a desktop stop */
 @media screen and (min-width: 768px) {
   body {
-    overflow: hidden;
+    overflow: hidden; /*Stop scrolling for main page, added scrolling for tweets in tweets*/
   }
   .content{
     height: calc(100vh - 120px);
     flex-direction: row;
     align-items: flex-start;
   }
+  .container{
+    width: 70%;
+  }
 
-}
-
-@media screen and (min-width: 1024px){
-  
 }

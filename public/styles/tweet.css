@@ -1,14 +1,7 @@
+
+/* Tweet container, needs to be 100% in order for tweets to change in size */
 .tweets {
   width: 100%;
-}
-
-.tweet header{
-  display: flex;
-  justify-content: space-between;
-}
-
-.tweet header .topLeft{
-  display: flex;
 }
 
 .tweet{
@@ -17,11 +10,23 @@
   border: 2px solid black;
 }
 
+.tweet header{
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Avatar and username */
+.tweet header .topLeft{
+  display: flex;
+}
+
+/* Tweet text */
 .tweet .info{
   margin-top: 0.5em;
   margin-left: 1em;
 }
 
+/* Margin and padding seprate becuase it looks better */
 .tweet footer {
   display: flex;
   margin-top: 10px;
@@ -32,6 +37,7 @@
   justify-content: space-between;
 }
 
+/* Basic tweet hover and icon hover */
 .tweet:hover{
   box-shadow: 5px 10px;
 }
@@ -40,10 +46,10 @@
   color: gold;
 }
 
+/* When it gets to tablet size tweets are shifted and now are scrollible */
 @media screen and (min-width: 768px) {
   .tweets{
     overflow-y: auto;
-    height: calc(100vh - 120px - 252px - 1em);
-    /* height: 58vh; */
+    height: calc(100vh - 120px - 252px - 1em); /* < This is an anoying thing that only needs to happen because if i put in anything else it either does not scroll or clips.*/
   }
 }

@@ -1,11 +1,10 @@
 $(document).ready(function() {
-  console.log("ready");
 
   $("#tweet-text").keyup(function() {
     const input = $(this).val().length;
-    const charLimit = 140 - input;
+    const charLimit = 140 - input; //Caculates character limit
     const output = $(this).parent().find("output");
-    $(output).text(charLimit);
+    $(output).text(charLimit); //Changes text in output to chars left
     if (charLimit < 0) {
       $(output).css({"color" : "red"});
     } else {
@@ -13,9 +12,4 @@ $(document).ready(function() {
     }
   });
 
-  // const form = document.getElementById("tweet-text");
-
-  // form.addEventListener('input', () => {
-  //   console.log(this);
-  // });
 });

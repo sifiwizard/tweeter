@@ -18,4 +18,4 @@
 // });
 // 
 // 
-// Originaly did this insted of css pseudo classes
+// Originaly did this insted of css pseudo classes, still nice looking but broke once i got to the end for no reason
